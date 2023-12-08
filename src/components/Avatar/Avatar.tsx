@@ -1,9 +1,19 @@
 import React from "react";
-import { AvatarWrapper } from "./styles";
-// import Image from "next/image";
+import { AvatarWrapper, StyledStatusIndicator } from "./styles";
+import occupied from "../../../public/images/minus.svg";
+import available from "../../../public/images/check.svg";
 
-// import { ReactComponent as ReactLogo } from "../../../public/images/minus.svg";
+type Props = {
+	status?: "occupied" | "unknown" | "available";
+};
 
-export const Avatar = () => {
-	return <AvatarWrapper></AvatarWrapper>;
+export const Avatar = ({ status }: Props) => {
+	return (
+		<AvatarWrapper>
+			{status && <StyledStatusIndicator
+				src={status === "occupied" ? occupied : available}
+				alt={status}
+			/>}
+		</AvatarWrapper>
+	);
 };
