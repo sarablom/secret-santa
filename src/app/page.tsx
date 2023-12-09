@@ -1,13 +1,13 @@
 import { Avatar } from "../components/Avatar";
+import { users } from "../data/users";
 
 export default function Home() {
 	return (
 		<main>
-			<h1>Secret santa</h1>
-			<Avatar status="occupied" />
-			<Avatar status="available" />
-			<Avatar />
-			<Avatar />
+			<h1>Secret Santa</h1>
+			{users.map(user => (
+				<Avatar user={user} />
+			))}
 		</main>
 	);
 }
