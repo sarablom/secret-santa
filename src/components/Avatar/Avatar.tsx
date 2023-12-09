@@ -1,19 +1,35 @@
 import React from "react";
-import { AvatarWrapper, StyledStatusIndicator } from "./styles";
+import { AvatarWrapper, StyledStatusIndicator, SantaHatImage } from "./styles";
+
 import occupied from "../../../public/images/minus.svg";
 import available from "../../../public/images/check.svg";
+import unknown from "../../../public/images/question.svg";
+import santaHat from "../../../public/images/santa-hat.png";
 
 type Props = {
-	status?: "occupied" | "unknown" | "available";
+	user: User;
 };
 
-export const Avatar = ({ status }: Props) => {
+export const Avatar = ({ user }: Props) => {
+	const { status, displaySantaHat, imgUrl, firstName } = user;
+  
 	return (
 		<AvatarWrapper>
-			{status && <StyledStatusIndicator
-				src={status === "occupied" ? occupied : available}
-				alt={status}
-			/>}
+			{displaySantaHat && (
+				<SantaHatImage src={santaHat} alt="Santa hat on avatar" />
+			)}
+			{status && (
+				<StyledStatusIndicator
+					src={
+						status === "occupied"
+							? occupied
+							: status === "unknown"
+							? unknown
+							: available
+					}
+					alt={`Online status: ${status}`}
+				/>
+			)}
 		</AvatarWrapper>
 	);
 };
