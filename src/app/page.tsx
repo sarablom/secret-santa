@@ -6,7 +6,7 @@ export default function Home() {
 		<main>
 			<h1>Secret Santa</h1>
 			{users.map(user => (
-				<Avatar user={user} />
+				<Avatar key={user.id} displayIcon={false} user={user} />
 			))}
 		</main>
 	);

@@ -1,20 +1,46 @@
 import React from "react";
-import { AvatarWrapper, StyledStatusIndicator, SantaHatImage } from "./styles";
+
+import { Bebas_Neue } from "next/font/google";
+const bebas = Bebas_Neue({ weight: "400", subsets: ["latin-ext"] });
+
+import {
+	AvatarWrapper,
+	StyledStatusIndicator,
+	SantaHatImage,
+	NoImagePlaceHolder,
+} from "./styles";
 
 import occupied from "../../../public/images/minus.svg";
 import available from "../../../public/images/check.svg";
 import unknown from "../../../public/images/question.svg";
 import santaHat from "../../../public/images/santa-hat.png";
+import avatar01 from "/public/images/AVATAR-PLACEHOLDERS/avatar-01.png";
+import avatar02 from "/public/images/AVATAR-PLACEHOLDERS/avatar-02.png";
+import avatar03 from "/public/images/AVATAR-PLACEHOLDERS/avatar-03.png";
+import avatar04 from "/public/images/AVATAR-PLACEHOLDERS/avatar-04.png";
+import { User } from "../../data/users";
 
-type Props = {
-	user: User;
+export const allImages = {
+	avatar01,
+	avatar02,
+	avatar03,
+	avatar04,
 };
 
-export const Avatar = ({ user }: Props) => {
+type Props = {
+	user?: User;
+	displayIcon?: boolean;
+};
+
+export const Avatar = ({ user, displayIcon = false }: Props) => {
+	if (!user) {
+		return <AvatarWrapper dispalyIcon={displayIcon} />;
+	}
+
 	const { status, displaySantaHat, imgUrl, firstName } = user;
-  
+
 	return (
-		<AvatarWrapper>
+		<AvatarWrapper className={bebas.className} $imgUrl={imgUrl}>
 			{displaySantaHat && (
 				<SantaHatImage src={santaHat} alt="Santa hat on avatar" />
 			)}
@@ -25,10 +51,15 @@ export const Avatar = ({ user }: Props) => {
 							? occupied
 							: status === "unknown"
 							? unknown
-							: available
+							: status === "available"
+							? available
+							: ""
 					}
 					alt={`Online status: ${status}`}
 				/>
+			)}
+			{!imgUrl && (
+				<NoImagePlaceHolder>{firstName.charAt(0)}</NoImagePlaceHolder>
 			)}
 		</AvatarWrapper>
 	);
