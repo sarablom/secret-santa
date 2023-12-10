@@ -1,48 +1,21 @@
-"use client";
-import { useState } from "react";
+import backgroundImage from "../../../public/images/bg__auth.svg";
+import secretSantaLogo from "../../../public/images/logo__secret-santa.png";
 
-import { CustomTextInput } from "../../components/CustomTextInput";
+import { LoginForm } from "./components/LoginForm/Loginform";
+import { LoginHeading, LoginMainWrapper, NeedAccountLink } from "./styles";
+
+import { Bebas_Neue } from "next/font/google";
+const bebas = Bebas_Neue({ weight: "400", subsets: ["latin-ext"] });
 
 export default function Home() {
-	const [name, setName] = useState("");
-	const [password, setPassword] = useState("");
-	const [email, setEmail] = useState("");
 	return (
-		<main>
-			<h1>Secret Santa</h1>
-
-			<div
-				style={{
-					width: "min(661px, 90%)",
-					display: "flex",
-					flexDirection: "column",
-					gap: "32px",
-				}}
-			>
-				<CustomTextInput
-					value={name}
-					onChange={setName}
-					id="user-name"
-					label="name"
-					type="text"
-				/>
-
-				<CustomTextInput
-					value={password}
-					onChange={setPassword}
-					id="password"
-					label="password"
-					type="password"
-				/>
-
-				<CustomTextInput
-					value={email}
-					onChange={setEmail}
-					id="email"
-					label="email"
-					type="email"
-				/>
-			</div>
-		</main>
+		<LoginMainWrapper $backgroundImage={backgroundImage}>
+			<img src={secretSantaLogo.src} alt="Secret Santa" />
+			<LoginHeading className={bebas.className}>
+				<span /> LOGIN <span />{" "}
+			</LoginHeading>
+			<LoginForm />
+			<NeedAccountLink href="">Need an account?</NeedAccountLink>
+		</LoginMainWrapper>
 	);
 }
