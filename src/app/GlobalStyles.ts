@@ -4,7 +4,7 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyles = createGlobalStyle`
 :root {
   --silver-tree: #70BD91;
-  --color-error: #FF4700;
+  --color-error: #FD4801;
 	--color-warning: #efa35d;
 	--color-success: hsla(190, 22%, 46%, 1);
   --color-primary: #fa7978;
