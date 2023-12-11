@@ -2,21 +2,20 @@ import { StaticImageData } from "next/image";
 import { allImages } from "../components/Avatar";
 
 export type User = {
-	id: string;
-	firstName: string;
-	lastName: string;
+	id?: string;
+	name: string;
 	imgUrl: StaticImageData | null;
 	status: "occupied" | "unknown" | "available" | "";
 	displayIcon: boolean;
 	displaySantaHat: boolean;
 	email: string;
+  password?: string;
 };
 
 export const users: User[] = [
 	{
 		id: "gdaggavvv",
-		firstName: "Wade",
-		lastName: "Warren",
+		name: "Wade Warren",
 		email: "wade.warren@example.com",
 		imgUrl: allImages.avatar03,
 		status: "available",
@@ -25,8 +24,7 @@ export const users: User[] = [
 	},
 	{
 		id: "pgdgmgad",
-		firstName: "Marvin",
-		lastName: "McKinney",
+		name: "Marvin McKinney",
 		email: "marvin.mckinney@example.com",
 		imgUrl: allImages.avatar02,
 		status: "occupied",
@@ -35,8 +33,7 @@ export const users: User[] = [
 	},
 	{
 		id: "pgägbbadvv",
-		firstName: "Jenny",
-		lastName: "Wilson",
+		name: "Jenny Wilson",
 		email: "jenny.wilson@example.com",
 		imgUrl: null,
 		status: "unknown",
@@ -45,8 +42,7 @@ export const users: User[] = [
 	},
 	{
 		id: "pgägbbadvv",
-		firstName: "Bessie",
-		lastName: "Cooper",
+		name: "Bessie Cooper",
 		email: "bessie.cooper@example.com",
 		imgUrl: allImages.avatar01,
 		status: "",
