@@ -8,7 +8,7 @@ export const LoginForm = () => {
 	const [name, setName] = useState("");
 	const [password, setPassword] = useState("");
 	return (
-		<LoginFormWrapper>
+		<LoginFormWrapper onSubmit={e => e.preventDefault()}>
 			<CustomTextInput
 				value={name}
 				onChange={setName}
@@ -23,9 +23,8 @@ export const LoginForm = () => {
 				label="password"
 				type="password"
 			/>
-      <Button onClick={() => {}}>
-        Submit
-      </Button>
+			<Button onClick={() => {}}>Submit</Button>
 		</LoginFormWrapper>
 	);
 };
+

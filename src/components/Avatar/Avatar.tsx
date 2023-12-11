@@ -37,7 +37,7 @@ export const Avatar = ({ user, displayIcon = false }: Props) => {
 		return <AvatarWrapper dispalyIcon={displayIcon} />;
 	}
 
-	const { status, displaySantaHat, imgUrl, firstName } = user;
+	const { status, displaySantaHat, imgUrl, name } = user;
 
 	return (
 		<AvatarWrapper className={bebas.className} $imgUrl={imgUrl}>
@@ -59,7 +59,7 @@ export const Avatar = ({ user, displayIcon = false }: Props) => {
 				/>
 			)}
 			{!imgUrl && (
-				<NoImagePlaceHolder>{firstName.charAt(0)}</NoImagePlaceHolder>
+				<NoImagePlaceHolder>{name.charAt(0)}</NoImagePlaceHolder>
 			)}
 		</AvatarWrapper>
 	);
